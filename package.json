@@ -1,0 +1,51 @@
+{
+  "name": "zeroreg",
+  "version": "0.1.0",
+  "description": "Regex was a mistake. Just like your ex. A human-readable regex builder.",
+  "author": "Zen",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts"
+    },
+    "./patterns": {
+      "import": "./dist/patterns/index.js",
+      "require": "./dist/patterns/index.cjs",
+      "types": "./dist/patterns/index.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zenweb3/zeroreg"
+  },
+  "bugs": {
+    "url": "https://github.com/zenweb3/zeroreg/issues"
+  },
+  "keywords": [
+    "regex",
+    "regexp",
+    "regular-expression",
+    "builder",
+    "human-readable",
+    "typescript",
+    "pattern-matching"
+  ],
+  "devDependencies": {
+    "@types/node": "^25.2.3",
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.18"
+  }
+}
