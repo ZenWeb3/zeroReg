@@ -1,6 +1,3 @@
-/**
- * Represents a chainable regex pattern
- */
 export interface Pattern {
   /** The raw regex pattern string */
   readonly source: string;

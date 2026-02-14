@@ -14,7 +14,8 @@ export class ZeroRegPattern implements Pattern {
    * Chain another pattern or string
    */
   then(pattern: Pattern | string): Pattern {
-    const next = typeof pattern === "string" ? escapeRegex(pattern) : pattern.source;
+    const next =
+      typeof pattern === "string" ? escapeRegex(pattern) : pattern.source;
     return new ZeroRegPattern(this.source + next);
   }
 
@@ -71,7 +72,8 @@ export class ZeroRegPattern implements Pattern {
    * Add OR logic with another pattern
    */
   or(pattern: Pattern | string): Pattern {
-    const alt = typeof pattern === "string" ? escapeRegex(pattern) : pattern.source;
+    const alt =
+      typeof pattern === "string" ? escapeRegex(pattern) : pattern.source;
     return new ZeroRegPattern(`(?:${this.source}|${alt})`);
   }
 
