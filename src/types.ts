@@ -48,9 +48,6 @@ export interface Pattern {
   toString(): string;
 }
 
-/**
- * Options for creating patterns
- */
 export interface PatternOptions {
   /** Wrap in non-capturing group */
   grouped?: boolean;
