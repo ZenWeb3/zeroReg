@@ -16,7 +16,7 @@
 <p align="center">
   <a href="https://www.npmjs.com/package/zeroreg"><img src="https://img.shields.io/npm/v/zeroreg?style=flat-square&color=000&labelColor=000" alt="npm version" /></a>
   <a href="https://www.npmjs.com/package/zeroreg"><img src="https://img.shields.io/npm/dm/zeroreg?style=flat-square&color=000&labelColor=000" alt="npm downloads" /></a>
-  <a href="https://github.com/yourusername/zeroreg/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-000?style=flat-square&labelColor=000" alt="license" /></a>
+  <a href="https://github.com/zenweb3/zeroreg/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-000?style=flat-square&labelColor=000" alt="license" /></a>
   <a href="https://bundlephobia.com/package/zeroreg"><img src="https://img.shields.io/bundlephobia/minzip/zeroreg?style=flat-square&color=000&labelColor=000&label=size" alt="bundle size" /></a>
 </p>
 
