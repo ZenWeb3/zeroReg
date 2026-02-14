@@ -5,19 +5,20 @@
   "author": "Zen",
   "license": "MIT",
   "type": "module",
+  "moduleResolution": "NodeNext",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
-      "require": "./dist/index.cjs",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/index.cjs"
     },
     "./patterns": {
+      "types": "./dist/patterns/index.d.ts",
       "import": "./dist/patterns/index.js",
-      "require": "./dist/patterns/index.cjs",
-      "types": "./dist/patterns/index.d.ts"
+      "require": "./dist/patterns/index.cjs"
     }
   },
   "files": [
