@@ -114,3 +114,161 @@ export function charNotIn(chars: string): Pattern {
 export function range(from: string, to: string): Pattern {
   return new ZeroRegPattern(`[${from}-${to}]`);
 }
+
+// QUANTIFIERS (standalone)
+
+/**
+ * Make a pattern optional
+ */
+export function optional(pattern: Pattern | string): Pattern {
+  if (typeof pattern === "string") {
+    return new ZeroRegPattern(`(?:${escapeRegex(pattern)})?`);
+  }
+  return pattern.optional();
+}
+
+/**
+ * Match one or more of a pattern
+ */
+export function oneOrMore(pattern: Pattern | string): Pattern {
+  if (typeof pattern === "string") {
+    return new ZeroRegPattern(`(?:${escapeRegex(pattern)})+`);
+  }
+  return pattern.oneOrMore();
+}
+
+/**
+ * Match zero or more of a pattern
+ */
+export function zeroOrMore(pattern: Pattern | string): Pattern {
+  if (typeof pattern === "string") {
+    return new ZeroRegPattern(`(?:${escapeRegex(pattern)})*`);
+  }
+  return pattern.zeroOrMore();
+}
+
+// GROUPS
+
+/**
+ * Create a capturing group
+ */
+export function capture(pattern: Pattern | string, name?: string): Pattern {
+  const src =
+    typeof pattern === "string" ? escapeRegex(pattern) : pattern.source;
+  if (name) {
+    return new ZeroRegPattern(`(?<${name}>${src})`);
+  }
+  return new ZeroRegPattern(`(${src})`);
+}
+
+/**
+ * Create a non-capturing group
+ */
+export function group(pattern: Pattern | string): Pattern {
+  const src =
+    typeof pattern === "string" ? escapeRegex(pattern) : pattern.source;
+  return new ZeroRegPattern(`(?:${src})`);
+}
+
+/**
+ * Match any of the provided patterns
+ */
+export function oneOf(...patterns: (Pattern | string)[]): Pattern {
+  const sources = patterns.map((p) =>
+    typeof p === "string" ? escapeRegex(p) : p.source,
+  );
+  return new ZeroRegPattern(`(?:${sources.join("|")})`);
+}
+
+// ANCHORS
+
+/**
+ * Match start of string/line
+ */
+export function startOfLine(): Pattern {
+  return new ZeroRegPattern("^");
+}
+
+/**
+ * Match end of string/line
+ */
+export function endOfLine(): Pattern {
+  return new ZeroRegPattern("$");
+}
+
+/**
+ * Match word boundary
+ */
+export function wordBoundary(): Pattern {
+  return new ZeroRegPattern("\\b");
+}
+
+/**
+ * Match non-word boundary
+ */
+export function nonWordBoundary(): Pattern {
+  return new ZeroRegPattern("\\B");
+}
+
+// LOOKAHEAD / LOOKBEHIND
+
+/**
+ * Positive lookahead - match if followed by pattern
+ */
+export function lookahead(pattern: Pattern | string): Pattern {
+  const src =
+    typeof pattern === "string" ? escapeRegex(pattern) : pattern.source;
+  return new ZeroRegPattern(`(?=${src})`);
+}
+
+/**
+ * Negative lookahead - match if NOT followed by pattern
+ */
+export function negativeLookahead(pattern: Pattern | string): Pattern {
+  const src =
+    typeof pattern === "string" ? escapeRegex(pattern) : pattern.source;
+  return new ZeroRegPattern(`(?!${src})`);
+}
+
+/**
+ * Positive lookbehind - match if preceded by pattern
+ */
+export function lookbehind(pattern: Pattern | string): Pattern {
+  const src =
+    typeof pattern === "string" ? escapeRegex(pattern) : pattern.source;
+  return new ZeroRegPattern(`(?<=${src})`);
+}
+
+/**
+ * Negative lookbehind - match if NOT preceded by pattern
+ */
+export function negativeLookbehind(pattern: Pattern | string): Pattern {
+  const src =
+    typeof pattern === "string" ? escapeRegex(pattern) : pattern.source;
+  return new ZeroRegPattern(`(?<!${src})`);
+}
+
+// SPECIAL
+
+/**
+ * Match a newline
+ */
+export function newline(): Pattern {
+  return new ZeroRegPattern("\\n");
+}
+
+/**
+ * Match a tab
+ */
+export function tab(): Pattern {
+  return new ZeroRegPattern("\\t");
+}
+
+/**
+ * Match a carriage return
+ */
+export function carriageReturn(): Pattern {
+  return new ZeroRegPattern("\\r");
+}
+
+export { raw };
